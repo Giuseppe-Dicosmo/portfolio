@@ -6,8 +6,14 @@
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
-    <h3>Installed CLI Plugins</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta error harum iusto expedita temporibus nobis ipsum inventore blanditiis similique, maxime voluptatum, sit consequatur possimus laudantium sequi illo quia repellendus minus.</p>
+    <h3 class="text-danger">Installed CLI Plugins</h3>
+    <b-button variant="danger">Button</b-button>
+    <b-col class="py-4 mb-2">
+      <b-icon icon="exclamation-circle" shift-h="8" class="bg-info"></b-icon>
+    </b-col>
+    <b-col class="py-4 mb-2">
+      <b-icon icon="exclamation-circle" shift-v="8" class="bg-info"></b-icon>
+    </b-col>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa" target="_blank" rel="noopener">pwa</a></li>

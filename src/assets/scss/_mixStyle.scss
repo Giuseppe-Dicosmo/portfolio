@@ -1,0 +1,19 @@
+// Palette di colori
+$salmoneScuro: #ff5757;
+$blu: #004aad;
+$oro: #ffcc00;
+
+// Texter color
+@mixin colorTitle {
+  background-image: linear-gradient(
+    90deg,
+    hsl(214deg 100% 34%) 0%,
+    hsl(332deg 72% 54%) 33%,
+    hsl(19deg 100% 62%) 67%,
+    hsl(48deg 100% 50%) 100%
+  );
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  font-weight: 1000;
+}

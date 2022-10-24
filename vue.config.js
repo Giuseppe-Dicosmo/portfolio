@@ -5,6 +5,9 @@ module.exports = defineConfig({
   pwa: {
     name: "Full Stack Web Developer",
     themeColor: "#ff5757",
+    workboxOptions: {
+      skipWaiting: true,
+    },
   },
 });
 
@@ -14,5 +17,8 @@ module.exports = {
   pwa: {
     name: "Full Stack Web Developer",
     themeColor: "#ff5757",
+    workboxOptions: {
+      skipWaiting: true,
+    },
   },
 };

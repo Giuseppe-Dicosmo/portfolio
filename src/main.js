@@ -13,6 +13,8 @@ Vue.use(IconsPlugin);
 
 // vue use motion
 import { MotionPlugin } from '@vueuse/motion'
+
+import './registerServiceWorker'
 Vue.use(MotionPlugin);
 
 

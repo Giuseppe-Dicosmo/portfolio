@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid="xl" class="container-jumbotron position-relative">
+  <b-container fluid class="container-jumbotron position-relative">
     <b-row
       class="container-circle rounded-circle d-flex flex-column flex-wrap align-content-center justify-content-end"
     >
@@ -20,7 +20,7 @@
           <figure
             v-motion-pop
             :delay="800"
-            class="img-profail-container col-10 col-md-8 col-lg-6 rounded-circle overflow-hidden"
+            class="img-profail-container col-10 col-md-8 col-lg-5 rounded-circle overflow-hidden"
           >
             <img src="@/assets/img/img-profail-1.png" alt="" />
           </figure>
@@ -119,13 +119,16 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/mixStyle";
 .container-jumbotron {
-  min-height: 43em;
-
+  min-height: 43rem;
+  scroll-snap-align: start;
+  overflow: hidden;
   .container-circle {
     position: absolute;
-    top: 50%;
+    margin: 0;
+    padding: 0;
+    top: 3%;
     left: 50%;
-    transform: translate(-50%, -75%);
+    transform: translate(-50%, -50%);
     height: 170%;
     width: 130%;
     box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);

@@ -33,17 +33,28 @@
           class="d-xl-flex justify-content-end"
           id="nav-collapse"
           is-nav
-          v-b-scrollspy:nav-scroller
         >
           <!-------------------------------------------->
-          <b-navbar-nav class="container-link text-warning">
+
+          <b-navbar-nav
+            v-b-scrollspy:nav-scroller
+            class="container-link text-warning"
+          >
             <b-nav-item
-              v-for="(link, i) in datiNavbar"
+              v-for="(link, i) in NavbarRouter"
               :key="i"
-              :href="link.href"
               :to="link.to"
             >
               {{ link.text }}
+            </b-nav-item>
+            <b-nav-item
+              v-for="(link, i) in NavbarLink"
+              :key="i"
+              :href="link.href"
+            >
+              <span v-if="$router.history.current['path'] === '/'">
+                {{ link.text }}
+              </span>
             </b-nav-item>
           </b-navbar-nav>
           <!-------------------------------------------->
@@ -61,25 +72,28 @@ export default {
   name: "App",
   data() {
     return {
-      datiNavbar: [
-        {
-          to: "/",
-          text: "Home",
-        },
+      NavbarRouter: [
         {
           to: "/about",
           text: "About",
         },
         {
-          href: "/#chi-sono",
+          to: "/",
+          text: "Home",
+        },
+      ],
+
+      NavbarLink: [
+        {
+          href: "#chi-sono",
           text: "Chi sono?",
         },
         {
-          href: "/#tipo-2",
+          href: "#tipo-2",
           text: "tipo 2",
         },
         {
-          href: "/#tipo-3",
+          href: "#tipo-3",
           text: "tipo 3",
         },
       ],
@@ -151,8 +165,8 @@ export default {
         font-weight: bold;
         color: $oro;
 
-        // &:active {
-        //   scale: 0.8;
+        // &.active {
+        //   color: $blu;
         // }
         &:hover {
           opacity: 0.5;

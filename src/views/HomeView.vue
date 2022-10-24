@@ -1,8 +1,8 @@
 <template>
-  <div class="home" style="overflow: hidden">
+  <div id="nav-scroller" class="home" style="overflow-x: hidden">
     <!-- <img alt="Vue logo" src="../assets/img/logo.png"> -->
     <jumbotron />
-    <presentation />
+    <presentation id="chi-sono" />
   </div>
 </template>
 
@@ -19,3 +19,5 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped></style>

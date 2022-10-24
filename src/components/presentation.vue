@@ -1,8 +1,15 @@
 <template>
   <b-container
-    v-motion-slide-visible-once-right
+    v-motion="'custom1'"
+    :initial="{
+      opacity: 0,
+      x: 100,
+    }"
+    :visibleOnce="{
+      opacity: 1,
+      x: 0,
+    }"
     :delay="500"
-    id="chi-sono"
     fluid="xl"
     class="container-presentation d-flex justify-content-center align-items-center"
   >
@@ -17,7 +24,7 @@
           opacity: 1,
           x: 0,
         }"
-        :delay="1000"
+        :delay="800"
         cols="12"
         md="4"
         class="p-3 d-flex justify-content-center align-items-center"
@@ -37,7 +44,7 @@
           opacity: 1,
           x: 0,
         }"
-        :delay="1500"
+        :delay="1100"
         cols="12"
         md="8"
         class="p-3 d-flex flex-column justify-content-center"
@@ -63,6 +70,7 @@
 import { useMotions } from "@vueuse/motion";
 
 // Get custom controls
+const { custom1 } = useMotions();
 const { custom2 } = useMotions();
 const { custom3 } = useMotions();
 
@@ -71,6 +79,7 @@ export default {
   methods: {
     customEvent() {
       // Change the current variant of `custom` element
+      custom1.variant.value = "custom";
       custom2.variant.value = "custom";
       custom3.variant.value = "custom";
     },
@@ -81,18 +90,19 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/mixStyle";
 .container-presentation {
-  min-height: 500px;
+  min-height: 100vh;
+  width: 100vw;
 
   .row-presentation {
     width: 90%;
-    min-height: 90%;
     border-radius: 50px;
     background: $oro;
 
     .img-presentation {
       border-radius: 50px;
-      background-color: $salmoneScuro;
+      width: 100%;
       aspect-ratio: auto 1 / 1;
+      background-color: $salmoneScuro;
     }
   }
 

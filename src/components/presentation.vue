@@ -50,7 +50,7 @@
         class="p-3 d-flex flex-column justify-content-center"
       >
         <h2 class="title-presentation">salve mi presento</h2>
-        <p>
+        <p class="text-dark">
           Sono un ragazzo empatico e capace di ascoltare e comprendere
           rapidamente il problema da affrontare.<br />L'ambizione e la
           determinazione non mi mancano e mi aiutano certamente a perseguire gli
@@ -90,13 +90,13 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/mixStyle";
 .container-presentation {
-  min-height: 100vh;
-  width: 100vw;
+  min-height: 500px;
 
   .row-presentation {
     width: 90%;
     border-radius: 50px;
     background: $oro;
+    box-shadow: 25px 15px 20px 0 $salmoneScuro;
 
     .img-presentation {
       border-radius: 50px;

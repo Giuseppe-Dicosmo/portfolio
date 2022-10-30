@@ -13,7 +13,7 @@
           <h1
             class="mb-5"
             :class="$store.state.dark == true ? 'text-light' : 'text-dark'"
-          >
+            >
             Ciao sono Giuseppe Dicosmo <span>Jr. Full Stack Web Developer</span>
           </h1>
 

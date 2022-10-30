@@ -3,11 +3,12 @@ module.exports = defineConfig({
   transpileDependencies: true,
 
   pwa: {
-    name: "Full Stack Web Developer",
-    themeColor: "#ff5757",
-    workboxOptions: {
-      skipWaiting: true,
-    },
+    name: 'Full Stack Web Developer',
+    themeColor: '#ff5757',
+    msTileColor: '#ff5757',
+    manifestOptions: {
+      background_color: '#ff5757'
+    }
   },
 });
 
@@ -15,10 +16,11 @@ module.exports = {
   publicPath: process.env.NODE_ENV === "production" ? "/portfolio/" : "/",
 
   pwa: {
-    name: "Full Stack Web Developer",
-    themeColor: "#ff5757",
-    workboxOptions: {
-      skipWaiting: true,
-    },
+    name: 'Full Stack Web Developer',
+    themeColor: '#ff5757',
+    msTileColor: '#ff5757',
+    manifestOptions: {
+      background_color: '#ff5757'
+    }
   },
 };

@@ -1,16 +1,13 @@
 <template>
-  <div
-    id="app"
-    :class="$store.state.dark == true ? 'bg-dark active' : 'bg-light'"
-  >
+  <div id="app" :class="$store.state.dark == true ? 'bg-dark' : 'bg-light'">
     <b-navbar toggleable="sm" class="navbar-router sticky-top">
       <b-container fluid="lg">
         <!-- <b-navbar-brand href="#"></b-navbar-brand> -->
 
         <b-navbar-nav>
-          <b-nav-item @click="darkMode">
+          <b-nav-item @click="$store.state.dark = !$store.state.dark">
             <div
-              class="ball"
+              class="ball btn rounded-circle"
               :class="$store.state.dark == true ? 'active' : ''"
             ></div>
           </b-nav-item>
@@ -21,7 +18,7 @@
           class="text-warning"
           target="nav-collapse"
         >
-          <span v-if="$store.state.navbarIcon == true">
+          <span v-if="$store.state.navbarIcon">
             <b-icon scale="1.5" icon="list"></b-icon>
           </span>
           <span v-else>
@@ -35,17 +32,18 @@
           is-nav
         >
           <!-------------------------------------------->
-
           <b-navbar-nav
             v-b-scrollspy:nav-scroller
             class="container-link text-warning"
+            @click="$store.state.navbarIcon = true"
           >
             <b-nav-item
               v-for="(link, i) in NavbarRouter"
               :key="i"
               :to="link.to"
+              @click="scrollTop"
             >
-              {{ link.text }}
+              <span>{{ link.text }}</span>
             </b-nav-item>
             <b-nav-item
               v-for="(link, i) in NavbarLink"
@@ -72,6 +70,7 @@ export default {
   name: "App",
   data() {
     return {
+      classBall: document.querySelector(".ball"),
       NavbarRouter: [
         {
           to: "/about",
@@ -100,7 +99,12 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["darkMode"]),
+    ...mapMutations(["darkMode", "scrollTop"]),
+  },
+
+  mounted() {
+    window.addEventListener("DOMContentLoaded", this.darkMode);
+    window.addEventListener("DOMContentLoaded", this.scrollTop);
   },
 };
 </script>
@@ -142,16 +146,17 @@ export default {
     backdrop-filter: blur(5px);
 
     .ball {
-      border-radius: 50%;
+      border: none;
       background: linear-gradient(315deg, $salmoneScuro, $oro 80%);
-      box-shadow: transparent;
+      box-shadow: inset -3px -2px 5px -2px transparent,
+        inset -10px -4px 0 0 transparent;
       width: 25px;
       aspect-ratio: 1 / 1;
       transform: scale(0.8);
-      transition: all 0.5s linear;
 
       &.active {
-        background: transparent;
+        border: none;
+        background: linear-gradient(315deg, transparent, transparent 80%);
         box-shadow: inset -3px -2px 5px -2px #8983f7,
           inset -10px -4px 0 0 #a3dafd;
       }

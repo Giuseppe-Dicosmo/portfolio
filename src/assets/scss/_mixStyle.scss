@@ -3,9 +3,10 @@ $blu: #004aad;
 $salmoneScuro: #ff5757;
 $oro: #ffcc00;
 
-// Button dark/light mode
-@mixin switch {
-}
+@import "~@fontsource/league-spartan/index.css";
+@import "~@fontsource/league-spartan/700.css";
+
+@import "~@fontsource/barlow-condensed/index.css";
 
 //background gradient
 @mixin gradient {
@@ -55,4 +56,10 @@ $oro: #ffcc00;
   color: transparent;
   text-transform: uppercase;
   font-weight: 1000;
+}
+
+@mixin ParagraphTitle {
+  text-transform: uppercase;
+  font-weight: 1000;
+  color: $blu;
 }

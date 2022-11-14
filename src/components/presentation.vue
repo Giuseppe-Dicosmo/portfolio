@@ -10,7 +10,7 @@
       x: 0,
     }"
     :delay="500"
-    fluid="xl"
+    fluid="lg"
     class="container-presentation d-flex justify-content-center align-items-center"
   >
     <b-row class="row-presentation">
@@ -89,6 +89,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/mixStyle";
+
 .container-presentation {
   min-height: 500px;
 
@@ -96,7 +97,6 @@ export default {
     width: 90%;
     border-radius: 50px;
     background: $oro;
-    box-shadow: 25px 15px 20px 0 $salmoneScuro;
 
     .img-presentation {
       border-radius: 50px;
@@ -107,9 +107,7 @@ export default {
   }
 
   .title-presentation {
-    text-transform: uppercase;
-    font-weight: 1000;
-    color: $blu;
+    @include ParagraphTitle
   }
 }
 </style>

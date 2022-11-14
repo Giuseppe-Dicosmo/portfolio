@@ -1,8 +1,11 @@
 <template>
   <div id="nav-scroller" class="home" style="overflow-x: hidden">
-    <!-- <img alt="Vue logo" src="../assets/img/logo.png"> -->
-    <jumbotron />
-    <presentation id="chi-sono" />
+    <main>
+      <jumbotron />
+      <presentation id="chi-sono" />
+      <trainingTime id="esperienza-formazione" />
+      <allProjects id="progetti" />
+    </main>
   </div>
 </template>
 
@@ -10,12 +13,16 @@
 // @ is an alias to /src
 import jumbotron from "@/components/jumbotron.vue";
 import presentation from "@/components/presentation.vue";
+import trainingTime from "@/components/trainingTime.vue";
+import allProjects from "@/components/allProjects.vue";
 
 export default {
   name: "HomeView",
   components: {
     jumbotron,
     presentation,
+    trainingTime,
+    allProjects,
   },
 };
 </script>

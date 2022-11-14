@@ -1,21 +1,16 @@
 <template>
   <div id="app" :class="$store.state.dark == true ? 'bg-dark' : 'bg-light'">
-    <b-navbar toggleable="sm" class="navbar-router sticky-top">
+    <b-navbar toggleable="md" class="navbar-router sticky-top">
       <b-container fluid="lg">
-        <!-- <b-navbar-brand href="#"></b-navbar-brand> -->
-
-        <b-navbar-nav>
-          <b-nav-item @click="$store.state.dark = !$store.state.dark">
-            <div
-              class="ball btn rounded-circle"
-              :class="$store.state.dark == true ? 'active' : ''"
-            ></div>
-          </b-nav-item>
-        </b-navbar-nav>
+        <b-navbar-brand class="m-0" href="#">
+          <figure class="m-0" style="width: 50px; aspect-ratio: 1 / 1">
+            <img :src="require(`./assets/img/img-brand.png`)" alt="" />
+          </figure>
+        </b-navbar-brand>
 
         <b-navbar-toggle
           @click="$store.state.navbarIcon = !$store.state.navbarIcon"
-          class="text-warning"
+          class="text-warning order-1"
           target="nav-collapse"
         >
           <span v-if="$store.state.navbarIcon">
@@ -27,14 +22,14 @@
         </b-navbar-toggle>
 
         <b-collapse
-          class="d-xl-flex justify-content-end"
+          class="d-xl-flex justify-content-end justify-content-center order-1 order-md-0"
           id="nav-collapse"
           is-nav
         >
-          <!-------------------------------------------->
+          <!-- link navbar -->
           <b-navbar-nav
             v-b-scrollspy:nav-scroller
-            class="container-link text-warning"
+            class="container-link text-warning text-center overflow-hidden"
             @click="$store.state.navbarIcon = true"
           >
             <b-nav-item
@@ -43,7 +38,7 @@
               :to="link.to"
               @click="scrollTop"
             >
-              <span>{{ link.text }}</span>
+              <span style="">{{ link.text }}</span>
             </b-nav-item>
             <b-nav-item
               v-for="(link, i) in NavbarLink"
@@ -57,6 +52,16 @@
           </b-navbar-nav>
           <!-------------------------------------------->
         </b-collapse>
+
+        <!-- bottone dark/light mode  -->
+        <b-navbar-nav title="dark/light mode">
+          <b-nav-item @click="$store.state.dark = !$store.state.dark">
+            <div
+              class="ball btn rounded-circle"
+              :class="$store.state.dark == true ? 'active' : ''"
+            ></div>
+          </b-nav-item>
+        </b-navbar-nav>
       </b-container>
     </b-navbar>
     <router-view />
@@ -70,7 +75,6 @@ export default {
   name: "App",
   data() {
     return {
-      classBall: document.querySelector(".ball"),
       NavbarRouter: [
         {
           to: "/about",
@@ -88,16 +92,17 @@ export default {
           text: "Chi sono?",
         },
         {
-          href: "#tipo-2",
-          text: "tipo 2",
+          href: "#esperienza-formazione",
+          text: "Esperienza & Formazione",
         },
         {
-          href: "#tipo-3",
-          text: "tipo 3",
+          href: "#progetti",
+          text: "Progetti",
         },
       ],
     };
   },
+
   methods: {
     ...mapMutations(["darkMode", "scrollTop"]),
   },
@@ -138,9 +143,13 @@ export default {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "League Spartan", sans-serif;
+
+  // font-family: "Barlow Condensed", sans-serif;
+
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
 
   .navbar-router {
     backdrop-filter: blur(5px);
@@ -168,13 +177,17 @@ export default {
 
       .nav-link {
         font-weight: bold;
-        color: $oro;
-
+        font-size: 20px;
+        color: $salmoneScuro;
+        transition: all 0.3s linear;
         // &.active {
         //   color: $blu;
         // }
         &:hover {
-          opacity: 0.5;
+          text-shadow: 0 1px 0px $oro, 1px 0 0px $oro, 1px 2px 1px $oro,
+            2px 1px 1px $blu, 2px 3px 2px $blu, 3px 2px 2px $blu;
+
+          scale: 1.1;
         }
       }
     }

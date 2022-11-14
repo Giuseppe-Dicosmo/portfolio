@@ -12,8 +12,8 @@
         <div class="d-flex flex-column align-items-center">
           <h1
             class="mb-5"
-            :class="$store.state.dark == true ? 'text-light' : 'text-dark'"
-            >
+            :class="$store.state.dark ? 'text-light' : 'text-dark'"
+          >
             Ciao sono Giuseppe Dicosmo <span>Jr. Full Stack Web Developer</span>
           </h1>
 
@@ -118,10 +118,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/mixStyle";
+
 .container-jumbotron {
   min-height: 43rem;
   scroll-snap-align: start;
   overflow: hidden;
+
   .container-circle {
     position: absolute;
     margin: 0;

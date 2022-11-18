@@ -1,12 +1,14 @@
-// Palette di colori
-$blu: #004aad;
-$salmoneScuro: #ff5757;
-$oro: #ffcc00;
-
+// font
 @import "~@fontsource/league-spartan/index.css";
 @import "~@fontsource/league-spartan/700.css";
 
 @import "~@fontsource/barlow-condensed/index.css";
+
+// Palette di colori
+$blu: #004aad;
+$salmoneScuro: #ff5757;
+$oro: #ffcc00;
+$box-shadow: rgba(0, 0, 0, 0.3);
 
 //background gradient
 @mixin gradient {

@@ -47,7 +47,7 @@
         :delay="1100"
         cols="12"
         md="8"
-        class="p-3 d-flex flex-column justify-content-center"
+        class="p-3 d-flex flex-column justify-content-center align-items-center align-items-md-start"
       >
         <h2 class="title-presentation">salve mi presento</h2>
         <p class="text-dark">
@@ -61,6 +61,29 @@
           tecnologia e per la logica unita al desiderio e al benessere che provo
           nell'aiutare il prossimo.
         </p>
+
+        <b-container
+          fluid
+          class="d-flex justify-content-center justify-content-md-start p-0"
+        >
+          <b-button
+            href="https://www.linkedin.com/in/giuseppe-dicosmo-20b4a223a/"
+            target="_blank"
+            class="btn-linkedin px-4 py-2 me-3"
+            variant="primary"
+          >
+            <b-icon icon="linkedin" class="me-1"></b-icon> Linkedin
+          </b-button>
+
+          <b-button
+            href="GiuseppeDicosmoCv.pdf"
+            download
+            class="btn-linkedin px-4 py-2"
+            variant="primary"
+          >
+            <b-icon icon="download" class="me-1"></b-icon> Scarica il mio CV
+          </b-button>
+        </b-container>
       </b-col>
     </b-row>
   </b-container>
@@ -97,6 +120,7 @@ export default {
     width: 90%;
     border-radius: 50px;
     background: $oro;
+    box-shadow: 10px 20px 40px $box-shadow;
 
     .img-presentation {
       border-radius: 50px;
@@ -107,7 +131,7 @@ export default {
   }
 
   .title-presentation {
-    @include ParagraphTitle
+    @include ParagraphTitle;
   }
 }
 </style>

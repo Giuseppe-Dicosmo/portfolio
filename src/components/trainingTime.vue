@@ -148,8 +148,6 @@ export default {
 
   .slide {
     display: none;
-    min-height: 400px;
-
     animation: slide-move 0.7s linear both;
 
     @keyframes slide-move {
@@ -170,6 +168,8 @@ export default {
     &.slide-active {
       display: flex;
       flex-direction: column;
+      min-height: 400px;
+      box-shadow: 10px 20px 40px $box-shadow;
     }
   }
 

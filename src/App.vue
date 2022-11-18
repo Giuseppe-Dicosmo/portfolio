@@ -38,14 +38,24 @@
               :to="link.to"
               @click="scrollTop"
             >
-              <span style="">{{ link.text }}</span>
+              <span
+                :class="
+                  $store.state.dark ? 'color-nav-light' : 'color-nav-dark'
+                "
+                >{{ link.text }}</span
+              >
             </b-nav-item>
             <b-nav-item
               v-for="(link, i) in NavbarLink"
               :key="i"
               :href="link.href"
             >
-              <span v-if="$router.history.current['path'] === '/'">
+              <span
+                v-if="$router.history.current['path'] === '/'"
+                :class="
+                  $store.state.dark ? 'color-nav-light' : 'color-nav-dark'
+                "
+              >
                 {{ link.text }}
               </span>
             </b-nav-item>
@@ -109,7 +119,7 @@ export default {
 
   mounted() {
     window.addEventListener("DOMContentLoaded", this.darkMode);
-    window.addEventListener("DOMContentLoaded", this.scrollTop);
+    // window.addEventListener("DOMContentLoaded", this.scrollTop);
   },
 };
 </script>
@@ -178,16 +188,24 @@ export default {
       .nav-link {
         font-weight: bold;
         font-size: 20px;
-        color: $salmoneScuro;
-        transition: all 0.3s linear;
-        // &.active {
-        //   color: $blu;
-        // }
-        &:hover {
-          text-shadow: 0 1px 0px $oro, 1px 0 0px $oro, 1px 2px 1px $oro,
-            2px 1px 1px $blu, 2px 3px 2px $blu, 3px 2px 2px $blu;
+        transition: all 0.3s linear, color 0s;
 
+        .color-nav-light {
+          color: $oro;
+          text-shadow: 3px 5px 3px rgba(255, 87, 87, 0.5);
+        }
+
+        .color-nav-dark {
+          color: $salmoneScuro;
+          text-shadow: 3px 5px 3px rgba(255, 204, 0, 0.5);
+        }
+
+        &:hover {
           scale: 1.1;
+        }
+
+        &:active {
+          color: $oro;
         }
       }
     }

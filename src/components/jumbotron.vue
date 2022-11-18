@@ -133,7 +133,7 @@ export default {
     transform: translate(-50%, -50%);
     height: 170%;
     width: 130%;
-    box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 40px $box-shadow;
     overflow: hidden;
 
     .presentation-container {

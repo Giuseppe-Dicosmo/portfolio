@@ -2,43 +2,108 @@
   <b-container fluid="lg">
     <h2 class="text-center">progetti</h2>
 
-    <div class="d-flex justify-content-center justify-content-sm-end">
+    <b-input-group-append
+      class="d-flex justify-content-center justify-content-around my-3"
+    >
       <b-button
         href="https://github.com/Giuseppe-Dicosmo"
         target="_blank"
-        class="btn-github px-3 py-2"
+        class="btn-github px-4 py-2"
       >
         <b-icon icon="github"></b-icon> GitHub
       </b-button>
-    </div>
+    </b-input-group-append>
 
-    <div>
-      <input
+    <b-input-group-append class="d-flex justify-content-center flex-wrap">
+      <b-button
         v-for="(element, i) in buttonProjects"
         :key="i"
-        type="button"
-        :value="element.text"
         :style="`background: ${element.backgroundColor}`"
-        class="btn btn-projects px-4 py-2"
+        class="btn btn-projects px-4 py-2 m-2 text-white"
         @click="filterButton(element.text)"
-      />
-    </div>
+      >
+        {{ element.text }}
+      </b-button>
+    </b-input-group-append>
 
-    <b-container class="my-5">
-      <b-row cols="1" cols-md="2" cols-lg="3" align-h="center">
+    <b-container fluid class="my-2">
+      <b-row
+        cols="1"
+        cols-lg="2"
+        cols-xl="3"
+        align-h="center"
+        class="d-flex justify-content-center"
+      >
         <b-col v-for="(element, i) in filterCard" :key="i" class="p-4">
-          <b-card
-            :title="element.title"
-            img-src="https://picsum.photos/400/300/?image=25"
-            img-alt="Image"
-            img-top
-            tag="article"
-            class="text-light"
-          >
-            <b-card-text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </b-card-text>
+          <b-card tag="article" class="text-light text-center">
+            <figure
+              class="rounded overflow-hidden"
+              style="max-width: 100%; height: 200px"
+            >
+              <img
+                :src="
+                  element.img
+                    ? element.img
+                    : require(`../assets/img/img-code.png`)
+                "
+                alt=""
+              />
+            </figure>
+
+            <b-container fluid class="p-0">
+              <h4>{{ element.title }}</h4>
+            </b-container>
+
+            <b-container fluid class="mb-4 p-0">
+              <b-button v-b-modal="`modal-${i}`" variant="outline-warning">
+                Informazioni sul progetto
+              </b-button>
+
+              <b-modal
+                :id="`modal-${i}`"
+                :header-bg-variant="
+                  $store.state.dark
+                    ? 'dark border-0 rounded-top'
+                    : 'light border-0 rounded-top'
+                "
+                :header-text-variant="$store.state.dark ? 'light' : 'dark'"
+                :body-bg-variant="
+                  $store.state.dark
+                    ? 'dark rounded-bottom'
+                    : 'light rounded-bottom'
+                "
+                :body-text-variant="$store.state.dark ? 'light' : 'dark'"
+                hide-footer
+                centered
+              >
+                <template #modal-header="{ close }">
+                  <h3 class="m-0">{{ element.title }}</h3>
+
+                  <b-button size="sm" variant="danger" @click="close()">
+                    <b-icon scale="0.7" icon="x-lg"></b-icon>
+                  </b-button>
+                </template>
+
+                <template #default>
+                  <p v-html="element.description"></p>
+                  <h4>Cosa ho utilizzato:</h4>
+
+                  <b-input-group-append
+                    style="gap: 10px"
+                    class="d-flex justify-content-center justify-content-sm-start flex-wrap"
+                  >
+                    <b-button
+                      class="text-light"
+                      v-for="(el, i) in element.languages"
+                      :key="i"
+                      variant="warning"
+                    >
+                      {{ el }}
+                    </b-button>
+                  </b-input-group-append>
+                </template>
+              </b-modal>
+            </b-container>
 
             <b-container fluid class="d-flex justify-content-center p-0">
               <b-button
@@ -71,14 +136,20 @@ export default {
   data() {
     return {
       languageSelection: "all",
+      pippo: false,
 
       buttonProjects: [
         {
           text: "All",
+          backgroundColor: "linear-gradient(150deg, #004aad, #ff5757, #ffcc00)",
         },
         {
           text: "Html Css",
           backgroundColor: "linear-gradient(90deg, #f16529, #214ce5)",
+        },
+        {
+          text: "Sass",
+          backgroundColor: "#cf649a",
         },
         {
           text: "Bootstrap",
@@ -89,62 +160,133 @@ export default {
           backgroundColor: "#f7d138",
         },
         {
+          text: "Typescript",
+          backgroundColor: "#0074c3",
+        },
+        {
           text: "Vue",
           backgroundColor: "#3fb27f",
+        },
+        {
+          text: "React",
+          backgroundColor: "#5ccfee",
+        },
+        {
+          text: "Php",
+          backgroundColor: "#7175aa",
+        },
+        {
+          text: "Laravel",
+          backgroundColor: "#f22a1d",
         },
       ],
 
       cardProjects: [
         {
-          img: require(`../assets/img/html.svg`),
-          title: "Spotify",
-          description: "",
-          linkGithub: "https://github.com/Giuseppe-Dicosmo/html-css-spotifyweb",
+          img: require(`../assets/img/img-deliverboo.jpg`),
+          title: "Deliverboo",
+          description:
+            "Una riproduzione simile a Glovo, il ristoratore può accedere alla sua area riservata dove può aggiungere i suoi nouvi piatti, controllare gli ordini ricevuti dai clienti.<br />Invece lato cliente può scegliere un ristorante qualsiasi quali pietanze comprare per poi procedere l'acquisto",
+          linkGithub: "https://github.com/Difelice-e/deliverboo-team5.git",
           linkWeb: "",
-          gender: "html css",
+          gender: "php, laravel, sass, bootstrap",
+          languages: [
+            "Html Css",
+            "Sass",
+            "Bootstrap",
+            "Javascript",
+            "Vue",
+            "Vue Router",
+            "Vuex",
+            "phpMyAdmin",
+            "php",
+            "Laravel",
+          ],
           disabled: "disabled",
         },
         {
-          img: require(`../assets/img/html.svg`),
-          title: "Playstation",
-          description: "",
-          linkGithub: "https://github.com/Giuseppe-Dicosmo/htmlcss-playstation",
+          img: require(`../assets/img/img-react-shop-card.jpg`),
+          title: "Card Shop",
+          description:
+            'Questo sito mostra delle card con vari articoli ho può filtrare il singolo articolo in base al suo ID grazie a delle chiamate API del sito "DummyJSON"',
+          linkGithub: "https://github.com/Giuseppe-Dicosmo/esercizio-react.git",
           linkWeb: "",
-          gender: "html css, bootstrap",
+          gender: "react, bootstrap",
+          languages: ["Html Css", "Bootstrap", "Javascript", "React"],
           disabled: "disabled",
         },
         {
-          img: require(`../assets/img/html.svg`),
-          title: "Sasso carta e forbici",
-          description: "",
-          linkGithub: "https://github.com/Giuseppe-Dicosmo/sasso-carta-forbice",
-          linkWeb: "https://giuseppe-dicosmo.github.io/sasso-carta-forbice/",
-          gender: "javascript",
+          img: require(`../assets/img/img-boolflix.jpeg`),
+          title: "Boolflix",
+          description:
+            'Una riproduzione simile a Netflix, dove grazie alle chiamate API del sito "The Movie Database" e della barra di ricerca possiamo filtrare tutti i Film e serie TV con quel determinato nome, inoltre ci verra mostrato di che nazionalità è il film la sua trama e il suo voto.',
+          linkGithub: "https://github.com/Giuseppe-Dicosmo/vue-boolflix.git",
+          linkWeb: "https://giuseppe-dicosmo.github.io/vue-boolflix/",
+          gender: "vue, sass",
+          languages: ["Html Css", "Sass", "Javascript", "Vue"],
         },
         {
-          img: require(`../assets/img/html.svg`),
-          title: "Campo minato",
-          description: "",
-          linkGithub: "",
-          linkWeb: "",
-          gender: "javascript",
-        },
-        {
-          img: require(`../assets/img/html.svg`),
+          img: require(`../assets/img/img-whatsapp.jpeg`),
           title: "Whatsapp",
-          description: "",
+          description:
+            "Whatsapp web, Una web app di messaggistica dove scegliendo il contatto desiderato potremmo inviare un messaggio è un bot ci rispondera dopo un paio di secondi e nella chat verrà salvato l'ultimo messaggio, possiamo filtrare anche i nostri contatti scrivendo il loro nome",
           linkGithub:
             "https://github.com/Giuseppe-Dicosmo/js-html-css-boolzap.git",
           linkWeb: "https://giuseppe-dicosmo.github.io/js-html-css-boolzap/",
-          gender: "vue ",
+          gender: "vue",
+          languages: ["Html Css", "Javascript", "Vue"],
         },
         {
-          img: require(`../assets/img/html.svg`),
-          title: "Boolflix",
-          description: "",
-          linkGithub: "https://github.com/Giuseppe-Dicosmo/vue-boolflix.git",
-          linkWeb: "https://giuseppe-dicosmo.github.io/vue-boolflix/",
-          gender: "vue",
+          img: "",
+          title: "Conto Bancario",
+          description:
+            "Questo progetto conto bancario, creato con classi di tipo oggetto dove ho creando degli utenti fittizi utilizzando il costruttore inserendo il loro codice bancario correttamente possiamo vedere tutti i loro movimenti, acquisti, bonifici e stipendio",
+          linkGithub: "https://github.com/Giuseppe-Dicosmo/conto-bancario.git",
+          linkWeb: "",
+          gender: "typescript",
+          languages: ["Typescript"],
+          disabled: "disabled",
+        },
+        {
+          img: require(`../assets/img/img-morra-cinese.jpeg`),
+          title: "Sasso carta e forbici",
+          description:
+            "Sasso carta e forbice, spopolato nel 1920 in america ed europa.<br />Ora convertita in chiave moderna si può giocare con un bot che randomicamente buttera un sasso una carta o una forbice, il primo che arrivera a 10 punti vincera e verra resettata la partita.",
+          linkGithub: "https://github.com/Giuseppe-Dicosmo/sasso-carta-forbice",
+          linkWeb: "https://giuseppe-dicosmo.github.io/sasso-carta-forbice/",
+          gender: "javascript",
+          languages: ["Html Css", "Javascript"],
+        },
+        {
+          img: require(`../assets/img/img-campo-minato.jpg`),
+          title: "Campo minato",
+          description:
+            "Campo minato un videogioco rompicapo, diffuso negli anni 90 da Microsoft è creato con vari livelli di difficoltà.",
+          linkGithub:
+            "https://github.com/Giuseppe-Dicosmo/js-campominato-grid.git",
+          linkWeb: "https://giuseppe-dicosmo.github.io/js-campominato-grid/",
+          gender: "javascript",
+          languages: ["Html Css", "Javascript"],
+        },
+        {
+          img: require(`../assets/img/img-playstation.jpeg`),
+          title: "Playstation",
+          description:
+            "Una riproduzione della schermata home del sito web Playstation con l'aggiunta di boostrap e responsive.",
+          linkGithub: "https://github.com/Giuseppe-Dicosmo/htmlcss-playstation",
+          linkWeb: "https://giuseppe-dicosmo.github.io/htmlcss-playstation/",
+          gender: "html css, bootstrap",
+          languages: ["Html Css", "Bootstrap"],
+        },
+        {
+          img: require(`../assets/img/img-spotify.jpeg`),
+          title: "Spotify",
+          description:
+            "Una riproduzione della schermata home dell'app Spotify e responsive.",
+          linkGithub: "https://github.com/Giuseppe-Dicosmo/html-css-spotifyweb",
+          linkWeb: "https://giuseppe-dicosmo.github.io/html-css-spotifyweb/",
+          gender: "html css",
+          languages: ["Html Css"],
         },
       ],
     };
@@ -179,25 +321,38 @@ h2 {
   background-color: #161b22;
   color: white;
   border: none;
+  transition: $transition;
+
+  &:hover {
+    opacity: 1;
+    scale: 1.1;
+  }
 }
 
 .btn-projects {
   border: none;
-  color: white;
   font-weight: 1000;
+  transition: $transition;
+
+  &:hover {
+    scale: 1.1;
+  }
 }
 
 .card {
   background: rgba(0, 74, 173, 1);
-  // background: rgba(255, 204, 0, 0.5);
-  // background-color: #10376b;
-  transition: all 0.3s linear;
+  transition: $transition;
 
   &:hover {
-    background: rgba(0, 74, 173, 1);
-    // background: rgba(255, 204, 0, 1);
+    background: rgba(0, 74, 173, 0.88);
     scale: 1.1;
-    box-shadow: 10px 20px 40px rgba(255, 204, 0, 0.5);
+    box-shadow: 10px 10px 15px $box-shadow;
   }
+
+  // .card-body {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  // }
 }
 </style>

@@ -3,9 +3,10 @@
     <main>
       <jumbotron />
       <presentation id="chi-sono" />
-      <trainingTime id="esperienza-formazione" />
+      <trainingTime id="esperienze" />
       <allProjects id="progetti" />
     </main>
+    <footer></footer>
   </div>
 </template>
 

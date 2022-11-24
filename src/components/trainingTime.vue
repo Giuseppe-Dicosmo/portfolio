@@ -4,7 +4,7 @@
     <div v-motion-slide-visible-once-top :delay="800">
       <h2 class="text-center mb-5">esperienze</h2>
 
-      <article>
+      <article style="margin-bottom: 130px">
         <section
           v-for="(training, i) in trainingArray"
           :key="i"
@@ -169,7 +169,7 @@ export default {
       display: flex;
       flex-direction: column;
       min-height: 400px;
-      box-shadow: 10px 20px 40px $box-shadow;
+      box-shadow: 10px 20px 20px $box-shadow;
     }
   }
 

@@ -81,7 +81,7 @@
             class="btn-linkedin px-4 py-2"
             variant="primary"
           >
-            <b-icon icon="download" class="me-1"></b-icon> Scarica il mio CV
+            <b-icon icon="download" class="me-1"></b-icon> Scarica CV
           </b-button>
         </b-container>
       </b-col>

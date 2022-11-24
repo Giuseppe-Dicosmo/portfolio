@@ -68,7 +68,7 @@
           <b-nav-item @click="$store.state.dark = !$store.state.dark">
             <div
               class="ball btn rounded-circle"
-              :class="$store.state.dark == true ? 'active' : ''"
+              :class="$store.state.dark ? 'active' : ''"
             ></div>
           </b-nav-item>
         </b-navbar-nav>
@@ -88,7 +88,7 @@ export default {
       NavbarRouter: [
         {
           to: "/about",
-          text: "About",
+          text: "",
         },
         {
           to: "/",
@@ -102,8 +102,8 @@ export default {
           text: "Chi sono?",
         },
         {
-          href: "#esperienza-formazione",
-          text: "Esperienza & Formazione",
+          href: "#esperienze",
+          text: "Esperienze",
         },
         {
           href: "#progetti",
@@ -147,7 +147,7 @@ export default {
   scrollbar-width: 0.6em;
 
   img {
-    max-width: 100%;
+    width: 100%;
     height: 100%;
   }
 }
@@ -188,7 +188,7 @@ export default {
       .nav-link {
         font-weight: bold;
         font-size: 20px;
-        transition: all 0.3s linear, color 0s;
+        transition: $transition, color 0s;
 
         .color-nav-light {
           color: $oro;

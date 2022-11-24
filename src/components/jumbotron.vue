@@ -11,7 +11,7 @@
         <!-- title and image -->
         <div class="d-flex flex-column align-items-center">
           <h1
-            class="mb-5"
+            class="mb-5 user-select-none"
             :class="$store.state.dark ? 'text-light' : 'text-dark'"
           >
             Ciao sono Giuseppe Dicosmo <span>Jr. Full Stack Web Developer</span>
@@ -20,7 +20,7 @@
           <figure
             v-motion-pop
             :delay="800"
-            class="img-profail-container col-10 col-md-8 col-lg-5 rounded-circle overflow-hidden"
+            class="img-profail-container col-10 col-md-8 col-lg-5 rounded-circle overflow-hidden user-select-none"
           >
             <img src="@/assets/img/img-profail-1.png" alt="" />
           </figure>
@@ -40,7 +40,7 @@
               :key="i"
               :style="`animation-delay: calc(${element.position} * var(--t) / var(--n))`"
             >
-              <figure class="col-2 col-lg-1">
+              <figure class="col-2 col-sm-1">
                 <img :src="element.img" alt="" />
               </figure>
             </li>
@@ -121,7 +121,6 @@ export default {
 
 .container-jumbotron {
   min-height: 43rem;
-  scroll-snap-align: start;
   overflow: hidden;
 
   .container-circle {
@@ -139,13 +138,9 @@ export default {
     .presentation-container {
       height: 52%;
 
-      h1 {
-        user-select: none;
-
-        & span {
-          display: block;
-          @include colorTitle;
-        }
+      h1 span {
+        display: block;
+        @include colorTitle;
       }
 
       .img-profail-container {

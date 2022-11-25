@@ -192,12 +192,12 @@ export default {
 
         .color-nav-light {
           color: $oro;
-          text-shadow: 3px 5px 3px rgba(255, 87, 87, 0.5);
+          text-shadow: 3px 3px 3px rgba(0, 74, 173, 0.8);
         }
 
         .color-nav-dark {
           color: $salmoneScuro;
-          text-shadow: 3px 5px 3px rgba(255, 204, 0, 0.5);
+          text-shadow: 3px 3px 3px rgba(255, 204, 0, 0.8);
         }
 
         &:hover {

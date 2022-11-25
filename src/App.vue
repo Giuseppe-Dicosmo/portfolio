@@ -87,12 +87,12 @@ export default {
     return {
       NavbarRouter: [
         {
-          to: "/about",
-          text: "",
-        },
-        {
           to: "/",
           text: "Home",
+        },
+        {
+          to: "/contactMe",
+          text: "Contattami",
         },
       ],
 

@@ -75,6 +75,7 @@
 
 <script>
 export default {
+  name: "trainingTime",
   data() {
     return {
       changeSlide: 0,

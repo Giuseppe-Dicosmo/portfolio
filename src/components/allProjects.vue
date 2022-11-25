@@ -133,6 +133,7 @@
 
 <script>
 export default {
+  name: "allProjects",
   data() {
     return {
       languageSelection: "all",

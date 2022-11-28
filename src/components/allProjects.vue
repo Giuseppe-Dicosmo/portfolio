@@ -341,19 +341,13 @@ h2 {
 }
 
 .card {
-  background: rgba(0, 74, 173, 1);
+  background: rgba($color: $blu, $alpha: 1);
   transition: $transition;
 
   &:hover {
-    background: rgba(0, 74, 173, 0.88);
+    background: rgba($color: $blu, $alpha: 0.9);
     scale: 1.1;
     box-shadow: 10px 10px 15px $box-shadow;
   }
-
-  // .card-body {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: space-between;
-  // }
 }
 </style>

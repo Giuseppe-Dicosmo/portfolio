@@ -117,15 +117,6 @@ export default {
             'Accompagnatore per disabili preso il presidio di riabilitazione "A. Quarto di Palo e Mons. G.Di Donna"',
         },
       ],
-
-      esperienza: [
-        {
-          background: "linear-gradient(-229deg, #fbd52d, #ef3a7b)",
-          qualifica: "FRONTEND WEB DEVELOPER",
-          azienda: "BC Soft Srl",
-          tempo: "06/2022 - 09/2022",
-        },
-      ],
     };
   },
 };

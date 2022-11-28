@@ -45,20 +45,26 @@
                 >{{ link.text }}</span
               >
             </b-nav-item>
-            <b-nav-item
-              v-for="(link, i) in NavbarLink"
-              :key="i"
-              :href="link.href"
+
+            <b-container
+              fluid
+              v-if="$router.history.current['path'] === '/' ? 'd-none' : ''"
+              class="d-flex p-0"
             >
-              <span
-                v-if="$router.history.current['path'] === '/'"
-                :class="
-                  $store.state.dark ? 'color-nav-light' : 'color-nav-dark'
-                "
+              <b-nav-item
+                v-for="(link, i) in NavbarLink"
+                :key="i"
+                :href="link.href"
               >
-                {{ link.text }}
-              </span>
-            </b-nav-item>
+                <span
+                  :class="
+                    $store.state.dark ? 'color-nav-light' : 'color-nav-dark'
+                  "
+                >
+                  {{ link.text }}
+                </span>
+              </b-nav-item>
+            </b-container>
           </b-navbar-nav>
           <!-------------------------------------------->
         </b-collapse>
@@ -192,12 +198,12 @@ export default {
 
         .color-nav-light {
           color: $oro;
-          text-shadow: 3px 3px 3px rgba(0, 74, 173, 0.8);
+          text-shadow: 3px 3px 3px rgba($color: $blu, $alpha: 0.8);
         }
 
         .color-nav-dark {
           color: $salmoneScuro;
-          text-shadow: 3px 3px 3px rgba(255, 204, 0, 0.8);
+          text-shadow: 3px 3px 3px rgba($color: $oro, $alpha: 0.8);
         }
 
         &:hover {

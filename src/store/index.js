@@ -15,8 +15,8 @@ export default new Vuex.Store({
     },
 
     darkMode(state) {
-      const button = document.querySelector(".ball");
       const body = document.querySelector("#app");
+      const button = document.querySelector(".ball");
 
       const useDark = window.matchMedia("(prefers-color-scheme: dark)");
       state.dark = useDark.matches;

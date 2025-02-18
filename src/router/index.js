@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ContactMe from "../views/ContactMe.vue";
+import Error404 from "../views/PageError404.vue";
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,14 @@ const routes = [
     component: ContactMe,
     meta: {
       title: "Contattami",
+    },
+  },
+  {
+    path: "/*",
+    name: "Error404",
+    component: Error404,
+    meta: {
+      title: "ERROR 404",
     },
   },
 ];

@@ -12,11 +12,10 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
 // vue use motion
-import { MotionPlugin } from '@vueuse/motion'
+import { MotionPlugin } from "@vueuse/motion";
 
-import './registerServiceWorker'
+import "./registerServiceWorker";
 Vue.use(MotionPlugin);
-
 
 Vue.config.productionTip = false;
 

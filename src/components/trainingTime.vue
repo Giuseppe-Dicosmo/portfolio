@@ -1,7 +1,7 @@
 <template>
   <b-container fluid="lg" class="container-experience-training my-5">
     <!-- formazione  -->
-    <div v-motion-slide-visible-once-top :delay="800">
+    <div v-motion-slide-visible-once-left :delay="800">
       <h2 class="text-center mb-5">esperienze</h2>
 
       <article style="margin-bottom: 130px">

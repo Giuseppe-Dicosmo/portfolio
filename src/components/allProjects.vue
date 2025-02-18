@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid="lg">
+  <b-container fluid="lg" v-motion-fade-visible-once :delay="500">
     <h2 class="text-center">progetti</h2>
 
     <b-input-group-append

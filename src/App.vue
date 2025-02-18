@@ -49,7 +49,7 @@
             <b-container
               fluid
               v-if="$router.history.current['path'] === '/' ? 'd-none' : ''"
-              class="d-flex p-0"
+              class="d-flex flex-column flex-md-row p-0"
             >
               <b-nav-item
                 v-for="(link, i) in NavbarLink"
@@ -62,6 +62,16 @@
                   "
                 >
                   {{ link.text }}
+                </span>
+              </b-nav-item>
+
+              <b-nav-item @click="installPWA">
+                <span
+                  :class="
+                    $store.state.dark ? 'color-nav-light' : 'color-nav-dark'
+                  "
+                >
+                  Installa App
                 </span>
               </b-nav-item>
             </b-container>
@@ -121,11 +131,20 @@ export default {
 
   methods: {
     ...mapMutations(["darkMode", "scrollTop"]),
+
+    installPWA() {
+      this.installEvent.prompt();
+    },
   },
 
   mounted() {
     window.addEventListener("DOMContentLoaded", this.darkMode);
-    // window.addEventListener("DOMContentLoaded", this.scrollTop);
+    window.addEventListener("DOMContentLoaded", this.scrollTop);
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      this.installEvent = e;
+    });
   },
 };
 </script>
